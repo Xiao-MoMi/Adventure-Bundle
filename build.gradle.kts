@@ -22,10 +22,11 @@ tasks.shadowJar {
     archiveFileName.set("Adventure-Bundle-" + project.version + ".jar")
 }
 
-tasks.publishToMavenLocal.get().dependsOn(tasks.shadowJar)
-
 tasks {
     publishing {
+        publishToMavenLocal {
+            dependsOn(shadowJar)
+        }
         publications {
             create<MavenPublication>("mavenJava") {
                 groupId = "net.momirealms"
