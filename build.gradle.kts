@@ -22,15 +22,13 @@ tasks.shadowJar {
     archiveFileName.set("Adventure-Bundle-" + project.version + ".jar")
 }
 
-tasks {
-    publishing {
-        publications {
-            create<MavenPublication>("mavenJava") {
-                groupId = "net.momirealms"
-                artifactId = "adventure-bundle"
-                version = rootProject.version.toString()
-                artifact(shadowJar)
-            }
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            groupId = "net.momirealms"
+            artifactId = "adventure-bundle"
+            version = rootProject.version.toString()
+            artifact(tasks.shadowJar)
         }
     }
 }

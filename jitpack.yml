@@ -3,4 +3,4 @@ jdk:
 
 install:
   - chmod +x gradlew
-  - ./gradlew clean -Pgroup=com.github.Xiao-MoMi -Pversion=0.5 -xtest publishToMavenLocal
+  - ./gradlew clean -Pgroup=com.github.Xiao-MoMi -xtest publishToMavenLocal
