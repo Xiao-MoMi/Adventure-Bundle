@@ -19,6 +19,11 @@ dependencies {
 }
 
 tasks {
+
+    shadowJar {
+        archiveFileName.set("Adventure-Bundle-" + project.version + ".jar")
+    }
+
     publishing {
         publications {
             create<MavenPublication>("mavenJava") {
