@@ -18,19 +18,15 @@ dependencies {
     implementation("net.kyori:adventure-platform-bungeecord:4.3.2")
 }
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+    options.release.set(17)
+}
+
 tasks.shadowJar{
     archiveFileName.set("Adventure-Bundle-" + project.version + ".jar")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            groupId = "net.momirealms"
-            artifactId = "adventure-bundle"
-            version = rootProject.version.toString()
-            artifacts {
-                add("archives", tasks.shadowJar)
-            }
-        }
-    }
+artifacts {
+    add("archives", tasks.shadowJar)
 }
