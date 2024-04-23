@@ -4,6 +4,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 .idea
+target
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
