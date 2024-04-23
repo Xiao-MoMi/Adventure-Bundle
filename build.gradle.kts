@@ -28,5 +28,5 @@ tasks.shadowJar{
 }
 
 artifacts {
-    add("archives", tasks.shadowJar)
+    archives(tasks.shadowJar)
 }
