@@ -22,9 +22,7 @@ tasks.shadowJar {
     archiveFileName.set("Adventure-Bundle-" + project.version + ".jar")
 }
 
-tasks.named("publishMavenJavaPublicationToMavenLocal").configure {
-    dependsOn(":shadowJar")
-}
+tasks.publishToMavenLocal.get().dependsOn(tasks.shadowJar)
 
 tasks {
     publishing {
