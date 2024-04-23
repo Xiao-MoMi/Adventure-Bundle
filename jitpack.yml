@@ -2,4 +2,5 @@ jdk:
   - openjdk17
 
 install:
+  - chmod +x gradlew
   - ./gradlew clean -Pgroup=com.github.Xiao-MoMi -Pversion=0.5 -xtest shadowJar publishToMavenLocal
