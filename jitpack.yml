@@ -1,2 +1,5 @@
 jdk:
   - openjdk17
+
+install:
+  - ./gradlew clean -Pgroup=com.github.Xiao-MoMi -Pversion=0.5 -xtest publishToMavenLocal

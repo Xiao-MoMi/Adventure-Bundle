@@ -18,8 +18,6 @@ dependencies {
     implementation("net.kyori:adventure-platform-bungeecord:4.3.2")
 }
 
-tasks.named("build").get().dependsOn(tasks.shadowJar)
-
 tasks.shadowJar {
     archiveFileName.set("Adventure-Bundle-" + project.version + ".jar")
 }
