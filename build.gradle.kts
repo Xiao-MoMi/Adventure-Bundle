@@ -1,37 +1,39 @@
 plugins {
     id("java")
+    id("application")
     id("maven-publish")
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "net.momirealms"
-version = "4.16.0"
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation("net.kyori:adventure-api:4.16.0")
-    implementation("net.kyori:adventure-text-minimessage:4.16.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.3.2")
-    implementation("net.kyori:adventure-platform-bungeecord:4.3.2")
-}
-
 allprojects {
+    apply<JavaPlugin>()
+    apply(plugin = "java")
+    apply(plugin = "application")
+    apply(plugin = "com.github.johnrengelman.shadow")
+    apply(plugin = "org.gradle.maven-publish")
+    application { mainClass.set("") }
+}
+
+subprojects {
+
+    group = "net.momirealms"
+    version = "4.16.0"
 
     tasks.shadowJar {
         destinationDirectory.set(file("$rootDir/target"))
+        archiveClassifier.set("")
         archiveFileName.set("Adventure-Bundle-" + project.version + ".jar")
     }
 
-    publishing {
-        publications {
-            create<MavenPublication>("mavenJava") {
-                groupId = "net.momirealms"
-                artifactId = "adventure-bundle"
-                version = rootProject.version.toString()
-                artifact(tasks.shadowJar)
+    if (project.name == "bundle") {
+        publishing {
+            publications {
+                create<MavenPublication>("mavenJava") {
+                    groupId = "net.momirealms"
+                    artifactId = "adventure-bundle"
+                    version = rootProject.version.toString()
+                    artifact(tasks.shadowJar)
+                }
             }
         }
     }
