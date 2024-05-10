@@ -17,7 +17,7 @@ allprojects {
 subprojects {
 
     group = "net.momirealms"
-    version = "4.16.0"
+    version = "4.17.0"
 
     tasks.shadowJar {
         destinationDirectory.set(file("$rootDir/target"))
